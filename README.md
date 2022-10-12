@@ -1,4 +1,4 @@
-# crapsGame
+# Craps Game
 
 Group Work by:
 Udochi Nwachukwu,
