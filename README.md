@@ -1,5 +1,5 @@
 # crapsGame
 
 Group Work by:
-Udochi Nwachukwu
+Udochi Nwachukwu,
 Shawn Kuruvilla
