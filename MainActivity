@@ -1,0 +1,50 @@
+package com.example.crapsgame;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+public class MainActivity extends AppCompatActivity {
+    private ImageView imageViewDice;
+    private Random rng = new Random();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        imageViewDice = findViewById(R.id.image_view_dice);
+        imageViewDice.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onCLick(View v)
+            {
+                rollDice();
+            }
+        })
+    }
+
+    private void rollDice(){
+        int randomNumber = rng.nextInt(6) + 1;
+
+        switch (randomNumber) {
+            case 1:
+                imageViewDice.setImageResource(R.drawable.die1);
+                break;
+            case 2:
+                imageViewDice.setImageResource(R.drawable.die2);
+                break;
+            case 3:
+                imageViewDice.setImageResource(R.drawable.die3);
+                break;
+            case 4:
+                imageViewDice.setImageResource(R.drawable.die4);
+                break;
+            case 5:
+                imageViewDice.setImageResource(R.drawable.die5);
+                break;
+            case 6:
+                imageViewDice.setImageResource(R.drawable.die6);
+                break;
+        }
+    }
+}
