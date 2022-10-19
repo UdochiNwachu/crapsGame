@@ -7,12 +7,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import java.util.Random;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final Random RANDOM = new Random();
     private Button rollDices;
     private ImageView imageView1, imageView2;
+    private int sumValue, point;
+    private boolean isFirstThrow, isGameOver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +24,16 @@ public class MainActivity extends AppCompatActivity {
         rollDices = (Button) findViewById(R.id.rollDices);
         imageView1 = (ImageView) findViewById(R.id.imageView1);
         imageView2 = (ImageView) findViewById(R.id.imageView2);
+        sumValue = point = 0;
 
         rollDices.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 int value1 = randomDieValue();
                 int value2 = randomDieValue();
+                sumValue = value1 + value2;
+                isFirstThrow = true;
+                isGameOver = false;
 
                 int res1 = getResources().getIdentifier("dice " + value1, "drawable", "com.example.crapsgame");
                 int res2 = getResources().getIdentifier("dice " + value1, "drawable", "com.example.crapsgame");
@@ -41,4 +48,47 @@ public class MainActivity extends AppCompatActivity {
     public static int randomDieValue(){
         return RANDOM.nextInt(6) + 1;
     }
-}
+
+    private void roll() {
+        int value1 = randomDieValue();
+        int value2 = randomDieValue();
+        sumValue = value1 + value2;
+
+        int res1 = getResources().getIdentifier("dice" + value1, "drawable", "com.example.dicegame");
+        int res2 = getResources().getIdentifier("dice" + value2, "drawable", "com.example.dicegame");
+
+        imageView1.setImageResource(res1);
+        imageView2.setImageResource(res2);
+
+        if(isFirstThrow) {
+            // set the first throw to  false
+            isFirstThrow = false;
+            getResult();
+        }else{
+            // if not first throw roll until gets the point value or 7
+            moreChances();
+        }
+    }
+
+    /**
+     * estimate the result on the basis of sum value
+     */
+    public void getResult() {
+        if (sumValue == 7 || sumValue == 11) {
+            // player wins and game is over
+            Toast.makeText(this, "You win", Toast.LENGTH_SHORT).show();
+            isGameOver = true;
+            isFirstThrow = true;
+        } else if (sumValue == 2 || sumValue == 3 || sumValue == 12) {
+            // player loses and game is over
+            Toast.makeText(this, "Home Wins", Toast.LENGTH_SHORT).show();
+            isGameOver = true;
+            isFirstThrow = true;
+        } else {
+            // game is not over, give more chances to user
+            point = sumValue;
+            isGameOver = false;
+            isFirstThrow = false;
+            Toast.makeText(this, "Roll again until you get this sum value of" + String.valueOf(point), Toast.LENGTH_SHORT).show();
+        }
+    }
