@@ -3,7 +3,7 @@ package com.example.crapsgame;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-
+//created class for main activity and rng with image view
 public class MainActivity extends AppCompatActivity {
     private ImageView imageViewDice;
     private Random rng = new Random();
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
             }
         })
     }
-
+//cases using images provided
     private void rollDice(){
         int randomNumber = rng.nextInt(6) + 1;
 
