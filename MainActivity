@@ -3,48 +3,42 @@ package com.example.crapsgame;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-//created class for main activity and rng with image view
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
-    private ImageView imageViewDice;
-    private Random rng = new Random();
+
+    public static final Random RANDOM = new Random();
+    private Button rollDices;
+    private ImageView imageView1, imageView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        rollDices = (Button) findViewById(R.id.rollDices);
+        imageView1 = (ImageView) findViewById(R.id.imageView1);
+        imageView2 = (ImageView) findViewById(R.id.imageView2);
 
-        imageViewDice = findViewById(R.id.image_view_dice);
-        imageViewDice.setOnClickListener(new View.OnClickListener(){
+        rollDices.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onCLick(View v)
-            {
-                rollDice();
-            }
-        })
-    }
-//cases using images provided
-    private void rollDice(){
-        int randomNumber = rng.nextInt(6) + 1;
+            public void onClick(View view) {
+                int value1 = randomDieValue();
+                int value2 = randomDieValue();
 
-        switch (randomNumber) {
-            case 1:
-                imageViewDice.setImageResource(R.drawable.die1);
-                break;
-            case 2:
-                imageViewDice.setImageResource(R.drawable.die2);
-                break;
-            case 3:
-                imageViewDice.setImageResource(R.drawable.die3);
-                break;
-            case 4:
-                imageViewDice.setImageResource(R.drawable.die4);
-                break;
-            case 5:
-                imageViewDice.setImageResource(R.drawable.die5);
-                break;
-            case 6:
-                imageViewDice.setImageResource(R.drawable.die6);
-                break;
-        }
+                int res1 = getResources().getIdentifier("dice " + value1, "drawable", "com.example.crapsgame");
+                int res2 = getResources().getIdentifier("dice " + value1, "drawable", "com.example.crapsgame");
+
+                imageView1.setImageResource(res1);
+                imageView2.setImageResource(res2);
+            }
+        });
+
+    }
+
+    public static int randomDieValue(){
+        return RANDOM.nextInt(6) + 1;
     }
 }
