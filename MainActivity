@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         int value2 = randomDieValue();
         sumValue = value1 + value2;
 
-        int res1 = getResources().getIdentifier("dice" + value1, "drawable", "com.example.dicegame");
-        int res2 = getResources().getIdentifier("dice" + value2, "drawable", "com.example.dicegame");
+        int res1 = getResources().getIdentifier("dice" + value1, "drawable", "com.example.crapsgame");
+        int res2 = getResources().getIdentifier("dice" + value2, "drawable", "com.example.crapsgame");
 
         imageView1.setImageResource(res1);
         imageView2.setImageResource(res2);
