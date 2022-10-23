@@ -43,5 +43,62 @@
         android:layout_marginBottom="30dp"
         android:layout_centerHorizontal="true"/>
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginRight="20dp"
+        android:text="Player" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="20dp"
+        android:text="Computer" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="95dp"
+        android:layout_height="55dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="247dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="SCORE"
+        android:textFontWeight="12"/>
+
+    <EditText
+        android:id="@+id/editTextTextPersonName2"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="253dp"
+        android:layout_marginEnd="58dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="COMPUTER" />
+
+    <EditText
+        android:id="@+id/editTextTextMultiLine"
+        android:layout_width="358dp"
+        android:layout_height="226dp"
+        android:layout_above="@+id/rollDices"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="43dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:text="CRAPS"
+        android:textSize="100dp" />
+
 
 </RelativeLayout>
